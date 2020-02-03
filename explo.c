@@ -30,6 +30,7 @@ void color(int couleurtexte, int couleurfond) {
         14: jaune
         15: blanc          */
 
+
 // structures
 struct Lieu {
   char nom[9];
@@ -183,10 +184,17 @@ int deplacement() {
   return 0;
 }
 
+
 int main() {
 
   // variables
   char nom[20];
+
+  char choixdestination[10];
+  char lecocia[7];
+  char astaxus[7];
+
+
 
 
   system("cls");
@@ -199,11 +207,14 @@ int main() {
 
   // choix du nom
   printf("\n\n");
+
   color(12, 0);
+
   printf("Comment vous appelez-vous ?  ");
   scanf("%s", nom);
   Sleep(1000);
   printf("\n");
+
   color(9, 0);
   printf("Bonjour %s, es-tu pret a decouvrir de nouveaux horizons ?\n\n", nom);
   Sleep(1000);
