@@ -30,7 +30,6 @@ void color(int couleurtexte, int couleurfond) {
         14: jaune
         15: blanc          */
 
-
 // structures
 struct Lieu {
   char nom[9];
@@ -56,7 +55,7 @@ struct Lieu Lieu3 = {"Ecacyre", "Ecacyre est un lieu peuple principalement de so
 struct Lieu Lieu4 = {"Nonalas", "Une cite gigantesque et pleine de joie de vivre se tient devant toi.", 14, 4};
 struct Lieu Lieu5 = {"Grajarim", "Grajarim est une grande plaine vide, hormis quelques arbres.", 14, 5};
 struct Lieu Lieu6 = {"Phegiamel", "Tu te rends dans cette métropole étrangement toujours de nuit, avec une lune bien claire.", 7, 6};
-struct Lieu Lieu7 = {"Urriran", "Te voici finalement arrive dans cette cite abandonnee afin d'affronter le monstre qui s'y cacherait...", 19, 7};
+struct Lieu Lieu7 = {"Urriram", "Te voici finalement arrive dans cette cite abandonnee afin d'affronter le monstre qui s'y cacherait...", 19, 7};
 
 int deplacement() {
 
@@ -65,137 +64,186 @@ int deplacement() {
   int niveau = 1;
   int niveausuffisant = 1;
   int lieuactuel = 0;
+  int endurance = 100;
 
-    // choix destination
-    color(15, 0);
-    printf("     --> Lecocia\n");
-    Sleep(250);
-    printf("     --> Astaxus\n");
-    Sleep(250);
-    printf("     --> Ecacyre\n");
-    Sleep(250);
-    printf("     --> Nonalas\n");
-    Sleep(250);
-    printf("     --> Grajarim\n");
-    Sleep(250);
-    printf("     --> Phegiamel\n");
-    Sleep(250);
-    printf("     --> Urriram\n\n");
-    Sleep(1000);
-    printf("Choisis ta destination : ");
-    scanf("%s", choixdestination);
-    printf("\n\n");
+while (endurance > 0) {
+  // choix destination
+  color(15, 0);
+  printf("     --> Lecocia\n");
+  Sleep(250);
+  printf("     --> Astaxus\n");
+  Sleep(250);
+  printf("     --> Ecacyre\n");
+  Sleep(250);
+  printf("     --> Nonalas\n");
+  Sleep(250);
+  printf("     --> Grajarim\n");
+  Sleep(250);
+  printf("     --> Phegiamel\n");
+  Sleep(250);
+  printf("     --> Urriram\n\n");
+  Sleep(1000);
+  printf("Choisis ta destination : ");
+  scanf("%s", choixdestination);
+  printf("\n\n");
 
-    // le joueur se rend à Lecocia
-    if (choixdestination[0] == 'L' && choixdestination[1] == 'e' && choixdestination[2] == 'c' && choixdestination[3] == 'o' && choixdestination[4] == 'c' && choixdestination[5] == 'i' && choixdestination[6] == 'a') {
-      if (lieuactuel == 0 || lieuactuel == 3 || lieuactuel == 5 || lieuactuel == 7) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu1.nom);
-        printf("%s\n\n", Lieu1.desc);
-      } else if (lieuactuel == 2 || lieuactuel == 4 || lieuactuel == 6) {
-        printf("Le lieu se trouve trop loin de ta position.\n\n");
-      }
+  // le joueur se rend à Lecocia
+  if (choixdestination[0] == 'L' && choixdestination[1] == 'e' && choixdestination[2] == 'c' && choixdestination[3] == 'o' && choixdestination[4] == 'c' && choixdestination[5] == 'i' && choixdestination[6] == 'a') {
+    if (lieuactuel == 0 || lieuactuel == 3 || lieuactuel == 5 || lieuactuel == 7) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu1.nom);
+      printf("%s\n\n", Lieu1.desc);
+    } else if (lieuactuel == 2 || lieuactuel == 4 || lieuactuel == 6) {
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 1) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 1;
+  }
 
-    // le joueur se rend à Astaxus
-    else if (choixdestination[0] == 'A' && choixdestination[1] == 's' && choixdestination[2] == 't' && choixdestination[3] == 'a' && choixdestination[4] == 'x' && choixdestination[5] == 'u' && choixdestination[6] == 's') {
-      if (lieuactuel == 0 || lieuactuel == 4 || lieuactuel == 6 || lieuactuel == 7) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu2.nom);
-        printf("%s\n\n", Lieu2.desc);
-      } else if (lieuactuel == 1 || lieuactuel == 3 || lieuactuel == 5) {
-        printf("Le lieu se trouve trop loin de ta position.\n\n");
-      }
+  // le joueur se rend à Astaxus
+  else if (choixdestination[0] == 'A' && choixdestination[1] == 's' && choixdestination[2] == 't' && choixdestination[3] == 'a' && choixdestination[4] == 'x' && choixdestination[5] == 'u' && choixdestination[6] == 's') {
+    if (lieuactuel == 0 || lieuactuel == 4 || lieuactuel == 6 || lieuactuel == 7) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu2.nom);
+      printf("%s\n\n", Lieu2.desc);
+    } else if (lieuactuel == 1 || lieuactuel == 3 || lieuactuel == 5) {
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 2) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 2;
+  }
 
-    // le joueur se rend à Ecacyre
-    else if (choixdestination[0] == 'E' && choixdestination[1] == 'c' && choixdestination[2] == 'a' && choixdestination[3] == 'c' && choixdestination[4] == 'y' && choixdestination[5] == 'r' && choixdestination[6] == 'e' && niveau >= 7) {
-      if (lieuactuel == 1 || lieuactuel == 4 || lieuactuel == 7) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu3.nom);
-        printf("%s\n\n", Lieu3.desc);
-      }
-    } else if (niveau < 7 || lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 5 || lieuactuel == 6 || lieuactuel == 0) {
+  // le joueur se rend à Ecacyre
+  else if (choixdestination[0] == 'E' && choixdestination[1] == 'c' && choixdestination[2] == 'a' && choixdestination[3] == 'c' && choixdestination[4] == 'y' && choixdestination[5] == 'r' && choixdestination[6] == 'e') {
+    if (lieuactuel == 1 || lieuactuel == 4 || lieuactuel == 7) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu3.nom);
+      printf("%s\n\n", Lieu3.desc);
+    } else if (lieuactuel == 2 || lieuactuel == 5 || lieuactuel == 6 || lieuactuel == 0) {
       niveausuffisant = 0;
       color(15,0);
-      printf("Tu n'as pas un niveau suffisant pour acceder a ce lieu, ou bien il se trouve trop loin.\n\n");
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 3) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 3;
+  }
 
-    // le joueur se rend à Nonalas
-    else if (choixdestination[0] == 'N' && choixdestination[1] == 'o' && choixdestination[2] == 'n' && choixdestination[3] == 'a' && choixdestination[4] == 'l' && choixdestination[5] == 'a' && choixdestination[6] == 's' && niveau >= 14) {
-      if (lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 7) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu4.nom);
-        printf("%s\n\n", Lieu4.desc);
-      }
-    } else if (niveau < 14 || lieuactuel == 1 || lieuactuel == 4 || lieuactuel == 5 || lieuactuel == 6 || lieuactuel == 0) {
+  // le joueur se rend à Nonalas
+  else if (choixdestination[0] == 'N' && choixdestination[1] == 'o' && choixdestination[2] == 'n' && choixdestination[3] == 'a' && choixdestination[4] == 'l' && choixdestination[5] == 'a' && choixdestination[6] == 's') {
+    if (lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 7) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu4.nom);
+      printf("%s\n\n", Lieu4.desc);
+    } else if (lieuactuel == 1 || lieuactuel == 5 || lieuactuel == 6 || lieuactuel == 0) {
       niveausuffisant = 0;
       color(15,0);
-      printf("Tu n'as pas un niveau suffisant pour acceder a ce lieu, ou bien il se trouve trop loin.\n\n");
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 4) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 4;
+  }
 
-    // le joueur se rend à Grajarim
-    else if (choixdestination[0] == 'G' && choixdestination[1] == 'r' && choixdestination[2] == 'a' && choixdestination[3] == 'j' && choixdestination[4] == 'a' && choixdestination[5] == 'r' && choixdestination[6] == 'i' && choixdestination[7] == 'm' && niveau >= 14) {
-      if (lieuactuel == 1 || lieuactuel == 6 || lieuactuel == 7) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu5.nom);
-        printf("%s\n\n", Lieu5.desc);
-      }
-    } else if (niveau < 14 || lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 4 || lieuactuel == 5 || lieuactuel == 0) {
+  // le joueur se rend à Grajarim
+  else if (choixdestination[0] == 'G' && choixdestination[1] == 'r' && choixdestination[2] == 'a' && choixdestination[3] == 'j' && choixdestination[4] == 'a' && choixdestination[5] == 'r' && choixdestination[6] == 'i' && choixdestination[7] == 'm') {
+    if (lieuactuel == 1 || lieuactuel == 6 || lieuactuel == 7) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu5.nom);
+      printf("%s\n\n", Lieu5.desc);
+    } else if (lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 4 || lieuactuel == 0) {
       niveausuffisant = 0;
       color(15,0);
-      printf("Tu n'as pas un niveau suffisant pour acceder a ce lieu, ou bien il se trouve trop loin.\n\n");
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 5) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 5;
+  }
 
-    // le joueur se rend à Phegiamel
-    else if (choixdestination[0] == 'P' && choixdestination[1] == 'h' && choixdestination[2] == 'e' && choixdestination[3] == 'g' && choixdestination[4] == 'i' && choixdestination[5] == 'a' && choixdestination[6] == 'm' && choixdestination[7] == 'e' && choixdestination[8] == 'l' && niveau >= 7) {
-      if (lieuactuel == 2 || lieuactuel == 5 || lieuactuel == 7) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu6.nom);
-        printf("%s\n\n", Lieu6.desc);
-      }
-    } else if (niveau < 7 || lieuactuel == 1 || lieuactuel == 3 || lieuactuel == 4 || lieuactuel == 6 || lieuactuel == 0) {
+  // le joueur se rend à Phegiamel
+  else if (choixdestination[0] == 'P' && choixdestination[1] == 'h' && choixdestination[2] == 'e' && choixdestination[3] == 'g' && choixdestination[4] == 'i' && choixdestination[5] == 'a' && choixdestination[6] == 'm' && choixdestination[7] == 'e' && choixdestination[8] == 'l') {
+    if (lieuactuel == 2 || lieuactuel == 5 || lieuactuel == 7) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu6.nom);
+      printf("%s\n\n", Lieu6.desc);
+    } else if (lieuactuel == 1 || lieuactuel == 3 || lieuactuel == 4 || lieuactuel == 0) {
       niveausuffisant = 0;
       color(15,0);
-      printf("Tu n'as pas un niveau suffisant pour acceder a ce lieu, ou bien il se trouve trop loin.\n\n");
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 6) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 6;
+  }
 
-    // le joueur se rend à Urriram
-    else if (choixdestination[0] == 'U' && choixdestination[1] == 'r' && choixdestination[2] == 'r' && choixdestination[3] == 'i' && choixdestination[4] == 'r' && choixdestination[5] == 'a' && choixdestination[6] == 'm' && niveau >= 19) {
-      if (lieuactuel == 1 || lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 4 || lieuactuel == 5 || lieuactuel == 6) {
-        niveausuffisant = 1;
-        color(9, 0);
-        printf("Vous avez atteint %s. ", Lieu7.nom);
-        printf("%s\n\n", Lieu7.desc);
-      }
-    } else if (niveau < 19 || lieuactuel == 7 || lieuactuel == 0) {
+  // le joueur se rend à Urriram
+  else if (choixdestination[0] == 'U' && choixdestination[1] == 'r' && choixdestination[2] == 'r' && choixdestination[3] == 'i' && choixdestination[4] == 'r' && choixdestination[5] == 'a' && choixdestination[6] == 'm') {
+    if (lieuactuel == 1 || lieuactuel == 2 || lieuactuel == 3 || lieuactuel == 4 || lieuactuel == 5 || lieuactuel == 6) {
+      niveausuffisant = 1;
+      color(9, 0);
+      printf("Vous avez atteint %s. ", Lieu7.nom);
+      printf("%s\n\n", Lieu7.desc);
+    } else if (lieuactuel == 0) {
       niveausuffisant = 0;
       color(15,0);
-      printf("Tu n'as pas un niveau suffisant pour acceder a ce lieu, ou bien il se trouve trop loin.\n\n");
+      printf("Le lieu se trouve trop loin de ta position.\n\n");
+    } else if (lieuactuel == 7) {
+      color(15,0);
+      printf("Tu te trouves deja dans ce lieu.\n\n");
     }
+    lieuactuel = 7;
+  }
 
+  // baisse d'endurance
+  if (lieuactuel == 1) {
+    endurance = endurance - Lieu1.diff;
+  }
+  if (lieuactuel == 2) {
+    endurance = endurance - Lieu2.diff;
+  }
+  if (lieuactuel == 3) {
+    endurance = endurance - Lieu3.diff;
+  }
+  if (lieuactuel == 4) {
+    endurance = endurance - Lieu4.diff;
+  }
+  if (lieuactuel == 5) {
+    endurance = endurance - Lieu5.diff;
+  }
+  if (lieuactuel == 6) {
+    endurance = endurance - Lieu6.diff;
+  }
+  if (lieuactuel == 7) {
+    endurance = endurance - Lieu7.diff;
+  }
+  color(2, 0);
+  printf("Endurance : %d\n\n", endurance);
+  color(15, 0);
+}
 
   return 0;
 }
-
 
 int main() {
 
   // variables
   char nom[20];
-
-  char choixdestination[10];
-  char lecocia[7];
-  char astaxus[7];
-
-
-
+  int endurance = 100;
 
   system("cls");
 
@@ -207,20 +255,25 @@ int main() {
 
   // choix du nom
   printf("\n\n");
-
   color(12, 0);
-
   printf("Comment vous appelez-vous ?  ");
   scanf("%s", nom);
   Sleep(1000);
-  printf("\n");
 
+  // mise en situation
+  printf("\n");
   color(9, 0);
   printf("Bonjour %s, es-tu pret a decouvrir de nouveaux horizons ?\n\n", nom);
   Sleep(1000);
+  color(2, 0);
+  printf("Endurance : %d\n\n", endurance);
+  Sleep(1000);
+
 
   deplacement();
 
+  color(9, 0);
+  printf("Vous n'avez plus d'endurance.\n");
 
   color(15, 0);
   return 0;
