@@ -34,9 +34,9 @@ int main() {
 
   // variables
   char nom[20];
-  int choixdestination;
-  int lecocia;
-  int astaxus;
+  char choixdestination[10];
+  char lecocia[7];
+  char astaxus[7];
 
 
 
@@ -66,19 +66,22 @@ int main() {
   printf("     --> Astaxus (2)\n\n");
   Sleep(1000);
   printf("Choisis ta destination : ");
-  scanf("%d", &choixdestination);
+  scanf("%s", choixdestination);
   printf("\n\n");
 
   // le joueur se rend à Lecocia
-  if (choixdestination == 1) {
+  if (choixdestination[0] == 'L' && choixdestination[1] == 'e' && choixdestination[2] == 'c' && choixdestination[3] == 'o' && choixdestination[4] == 'c' && choixdestination[5] == 'i' && choixdestination[6] == 'a') {
     color(9, 0);
     printf("Vous avez atteint Lecocia.\n");
   }
 
   // le joueur se rend à Astaxus
-  if (choixdestination == 2) {
+  if (choixdestination[0] == 'A' && choixdestination[1] == 's' && choixdestination[2] == 't' && choixdestination[3] == 'a' && choixdestination[4] == 'x' && choixdestination[5] == 'u' && choixdestination[6] == 's') {
     color(9, 0);
     printf("Vous avez atteint Astaxus.\n");
   }
+
+  color(15, 0);
+  return 0;
 
 }
